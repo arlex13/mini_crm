@@ -13,9 +13,3 @@ class Productos(models.Model):
 
     vendedor = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='productos')
-
-    activo = models.BooleanField(default=True)
-
-    def delete(self):
-        self.activo = False
-        self.save()

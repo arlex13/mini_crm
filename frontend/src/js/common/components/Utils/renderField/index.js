@@ -6,5 +6,6 @@ export {
     renderSelectField,
     renderNumber,
     renderCurrency,
-    renderSwitch
-} from './renderField'
+    renderSwitch,
+    renderFilePicker,
+} from "./renderField";
