@@ -3,10 +3,12 @@ from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken.views import obtain_auth_token
 from django.conf.urls import url
 from api import viewsets
+from api.viewsets.productos import ProductoViewSet
 
 
 router = DefaultRouter()
 router.register(r'user', viewsets.UserViewset)
+router.register(r'producto', ProductoViewSet)
 
 
 urlpatterns = [
