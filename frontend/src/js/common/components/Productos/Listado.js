@@ -65,7 +65,7 @@ class Listado extends Component {
                         dataSort
                         dataFormat={standardActions({
                             editar: "productos",
-                            // ver: "productos",
+                            ver: "productos",
                             eliminar,
                         })}
                     >
