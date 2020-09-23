@@ -42,13 +42,14 @@ class Listado extends Component {
                                     paddingRight: "35px",
                                 }}
                             />
-                            {/* <FontAwesomeIcon
-                                icon={faSearch}
-                                className="icono color-4AC"
+                            <i
+                                className="icono material-icons"
                                 style={{
                                     marginLeft: -35,
                                 }}
-                            /> */}
+                            >
+                                search
+                            </i>
                         </div>
                     </div>
                 </div>
@@ -62,7 +63,7 @@ class Listado extends Component {
                     <TableHeaderColumn
                         dataField="id"
                         dataAlign="center"
-                        dataSort
+                        // dataSort
                         dataFormat={standardActions({
                             editar: "productos",
                             ver: "productos",
@@ -74,9 +75,12 @@ class Listado extends Component {
                     <TableHeaderColumn isKey dataField="nombre" dataSort>
                         Nombre
                     </TableHeaderColumn>
-                    {/* <TableHeaderColumn dataField="direccion" dataSort>
-                        Dirección
-                    </TableHeaderColumn> */}
+                    <TableHeaderColumn dataField="precio" dataSort>
+                        Precio
+                    </TableHeaderColumn>
+                    <TableHeaderColumn dataField="cantidad" dataSort>
+                        Cantidad
+                    </TableHeaderColumn>
                 </Grid>
             </div>
         );

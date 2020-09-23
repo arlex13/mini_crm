@@ -1,11 +1,11 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import {
-    validate,
     validatorFromFunction,
     validators,
     combine,
 } from "validate-redux-form";
+
 import {
     renderField,
     renderNumber,
@@ -14,6 +14,27 @@ import {
 } from "../Utils/renderField";
 
 import { phone } from "../../../utility/validation";
+
+const validate = (values) => {
+    const errors = {};
+    if (!values.nombre) {
+        errors.nombre = "Campo requerido";
+    }
+    if (!values.descripcion) {
+        errors.descripcion = "Campo requerido";
+    }
+    if (!values.precio) {
+        errors.precio = "Campo requerido";
+    }
+    if (!values.cantidad) {
+        errors.cantidad = "Campo requerido";
+    }
+    if (!values.imagen) {
+        errors.imagen = "Campo requerido";
+    }
+
+    return errors;
+};
 
 const ProductoForm = (props) => {
     const { handleSubmit, actualizar, ver, datos, setImagen } = props;
@@ -108,4 +129,5 @@ const ProductoForm = (props) => {
 
 export default reduxForm({
     form: "ProductoForm", // a unique identifier for this form
+    validate,
 })(ProductoForm);

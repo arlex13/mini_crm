@@ -360,7 +360,12 @@ export const renderFilePicker = ({
                     reader.readAsDataURL(file);
                 }}
             />
-            {invalid && <div className="invalid-feedback">{error}</div>}
+
+            {invalid && (
+                <div className="invalid-feedback" style={{ display: "inline" }}>
+                    {error}
+                </div>
+            )}
         </div>
     );
 };
