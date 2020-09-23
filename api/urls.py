@@ -6,10 +6,13 @@ from api import viewsets
 from api.viewsets.productos import ProductoViewSet
 from api.viewsets.facturas import FacturaViewSet
 
+from api.viewsets.productosVenta import ProductoVentaViewSet
+
 
 router = DefaultRouter()
 router.register(r'user', viewsets.UserViewset)
 router.register(r'producto', ProductoViewSet)
+router.register(r'productoventa', ProductoVentaViewSet)
 router.register(r'factura', FacturaViewSet)
 
 

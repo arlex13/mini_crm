@@ -5,6 +5,7 @@ import { NotificationContainer } from "react-notifications";
 import { Login, Profile, Registro } from "./common/components/LoginRegister";
 import Demo from "./common/components/Demo/Demo";
 import ProtectedRoute from "./ProtectedRoute";
+import ProtectedRouteVenta from "./ProtectedRouteVenta";
 import Examples from "./common/components/Examples/Basic";
 import NotFound from "./common/components/layout/NotFound/NotFound";
 
@@ -20,6 +21,7 @@ require("../style/index.css");
 
 import CrearProducto from "./common/components/Productos/CrearContainer";
 import Producto from "./common/components/Productos/ListadoContainer";
+import Venta from "./common/components/Ventas/ListadoContainer";
 
 module.exports = (
     <div>
@@ -27,7 +29,7 @@ module.exports = (
             <Switch>
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/registro" component={Registro} />
-                <ProtectedRoute exact path="/" component={Demo} />
+                <ProtectedRouteVenta exact path="/" component={Venta} />
                 <ProtectedRoute exact path="/page2" component={Examples} />
                 <ProtectedRoute
                     exact

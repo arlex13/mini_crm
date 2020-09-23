@@ -13,3 +13,5 @@ class Productos(models.Model):
 
     vendedor = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='productos')
+        
+    creado = models.DateTimeField(auto_now_add=True)

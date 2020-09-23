@@ -66,21 +66,21 @@ class ProductoViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)  
 
 
-    def get_permissions(self):
-        permissions = []
-        if self.action == "todos":
-            permissions.append(AllowAny)
-        else:
-            permissions.append(IsAuthenticated)
-        return [p() for p in permissions]
+    # def get_permissions(self):
+    #     permissions = []
+    #     if self.action == "todos":
+    #         permissions.append(AllowAny)
+    #     else:
+    #         permissions.append(IsAuthenticated)
+    #     return [p() for p in permissions]
 
-    @action(detail=False, methods=['get'])
-    def todos(self, request, *args, **kwargs):
-        queryset = Productos.objects.all()
-        page = self.paginate_queryset(queryset)
-        if page is not None:
-            serializer =  self.get_serializer(page, many=True)
-            return self.get_paginated_response(serializer.data)
+    # @action(detail=False, methods=['get'])
+    # def todos(self, request, *args, **kwargs):
+    #     queryset = Productos.objects.all()
+    #     page = self.paginate_queryset(queryset)
+    #     if page is not None:
+    #         serializer =  self.get_serializer(page, many=True)
+    #         return self.get_paginated_response(serializer.data)
 
-        serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)
+    #     serializer = self.get_serializer(queryset, many=True)
+    #     return Response(serializer.data)
