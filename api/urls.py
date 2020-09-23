@@ -4,11 +4,13 @@ from rest_framework.authtoken.views import obtain_auth_token
 from django.conf.urls import url
 from api import viewsets
 from api.viewsets.productos import ProductoViewSet
+from api.viewsets.facturas import FacturaViewSet
 
 
 router = DefaultRouter()
 router.register(r'user', viewsets.UserViewset)
 router.register(r'producto', ProductoViewSet)
+router.register(r'factura', FacturaViewSet)
 
 
 urlpatterns = [
