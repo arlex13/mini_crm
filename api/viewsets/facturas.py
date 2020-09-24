@@ -36,7 +36,7 @@ class FacturaViewSet(viewsets.ModelViewSet):
                 data=request.data
                 producto = Productos.objects.get(id=data['producto'])
                
-                if(producto.cantidad >= data['cantidad'] and producto.cantidad > 0 and data['cantidad'] > 0):                  
+                if(producto.cantidad >= int(data['cantidad']) and producto.cantidad > 0 and int(data['cantidad']) > 0):                  
                     producto.cantidad = producto.cantidad - int(data['cantidad'])  
                     producto.save()
 

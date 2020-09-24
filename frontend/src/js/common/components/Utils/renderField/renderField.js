@@ -13,6 +13,7 @@ export const renderField = ({
     placeholder,
     type,
     min,
+    max,
     meta: { touched, error },
 }) => {
     const invalid = touched && error;
@@ -23,6 +24,7 @@ export const renderField = ({
                 placeholder={placeholder}
                 type={type}
                 min={min}
+                max={max}
                 className={classNames("form-control", {
                     "is-invalid": invalid,
                 })}

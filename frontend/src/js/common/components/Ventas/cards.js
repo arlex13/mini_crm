@@ -2,7 +2,7 @@ import React from "react";
 import "./cards.css";
 import moment from "moment";
 
-const Cards = ({ producto, desactivar, mayorCero }) => {
+const Cards = ({ producto, desactivar, mayorCero, btnComprar }) => {
     // console.log("card:", datos);
     return (
         <React.Fragment>
@@ -44,9 +44,16 @@ const Cards = ({ producto, desactivar, mayorCero }) => {
                             <div class="price txt-18-n color-FF4">
                                 <h5 class="mt-4">Q {producto.precio} </h5>
                             </div>
-                            <a href="#" class="btn btn-danger mt-3">
+
+                            <button
+                                type="button"
+                                class="btn btn-danger mt-3"
+                                onClick={() => {
+                                    btnComprar(true, producto);
+                                }}
+                            >
                                 Comprar
-                            </a>
+                            </button>
                         </div>
                         <br />
                         <p class=" txt-13 ">

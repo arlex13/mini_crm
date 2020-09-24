@@ -6,13 +6,15 @@ import { standardActions } from "../Utils/Grid/StandardActions";
 import Cards from "./cards";
 import "./cards.css";
 import LoadMask from "../Utils/LoadMask/LoadMask";
+import { FullModal } from "../Utils/Modal/FullModal";
+import FormularioVenta from "./Formulario";
+
 class Listado extends Component {
     componentWillMount = () => {
         this.props.listar();
     };
 
     render() {
-        console.log("ESTADO: ", this.props);
         const {
             data,
             loader,
@@ -23,10 +25,12 @@ class Listado extends Component {
             listar,
             page,
             me,
+            showModal,
+            show_modal,
+            btnComprar,
+            producto,
+            comprarProducto,
         } = this.props;
-        if (me) {
-            console.log("yo soy el mee", me);
-        }
 
         const username = me ? me.username : false;
         return (
@@ -63,6 +67,14 @@ class Listado extends Component {
                         </div>
                     </div>
                 </div>
+                <FullModal show_modal={show_modal} showModal={btnComprar}>
+                    <FormularioVenta
+                        onSubmit={comprarProducto}
+                        producto={producto}
+                        // CancelarCompra={}
+                        // onChangeField={}
+                    />
+                </FullModal>
                 <LoadMask loading={loader} light>
                     <div class="container">
                         <div class="row">
@@ -78,6 +90,7 @@ class Listado extends Component {
                                     mayorCero={
                                         producto.cantidad > 0 ? true : false
                                     }
+                                    btnComprar={btnComprar}
                                 />
                             ))}
                         </div>
