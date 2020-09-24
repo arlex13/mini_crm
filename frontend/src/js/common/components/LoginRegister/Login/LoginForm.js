@@ -1,18 +1,32 @@
-import React from 'react';
-import { Field, reduxForm } from 'redux-form';
-import { validate, validators } from 'validate-redux-form';
-import { renderField } from '../../Utils/renderField';
+import React from "react";
+import { Field, reduxForm } from "redux-form";
+import { validate, validators } from "validate-redux-form";
+import { renderField } from "../../Utils/renderField";
 
 const LoginForm = (props) => {
     const { handleSubmit, pristine, reset, submitting } = props;
     return (
-        <form name="loginForm" className="form-validate mb-lg" onSubmit={handleSubmit}>
+        <form
+            name="loginForm"
+            className="form-validate mb-lg txt-16"
+            onSubmit={handleSubmit}
+        >
             <div className="form-group has-feedback">
-                <label htmlFor="username">Usuario</label>
-                <Field name="username" label="Usuario" component={renderField} type="text" className="form-control" />
+                <label className="txt-18-n color-057" htmlFor="username">
+                    Usuario
+                </label>
+                <Field
+                    name="username"
+                    label="Usuario"
+                    component={renderField}
+                    type="text"
+                    className="form-control"
+                />
             </div>
             <div className="form-group has-feedback">
-                <label htmlFor="password">Contraseña</label>
+                <label className="txt-18-n color-057" htmlFor="password">
+                    Contraseña
+                </label>
                 <Field
                     name="password"
                     label="Contraseña"
@@ -21,19 +35,24 @@ const LoginForm = (props) => {
                     className="form-control"
                 />
             </div>
-            <div className="buttons-box">
-                <button type="submit" className="btn btn-primary m-1 align-self-center">Login</button>
+            <div className="buttons-box mb-3">
+                <button
+                    type="submit"
+                    className="btn-primario2 m-1 align-self-center"
+                >
+                    Login
+                </button>
             </div>
         </form>
     );
 };
 
 export default reduxForm({
-    form: 'login', // a unique identifier for this form
+    form: "login", // a unique identifier for this form
     validate: (data) => {
         return validate(data, {
-            username: validators.exists()('Este campo es requerido'),
-            password: validators.exists()('Este campo es requerido'),
+            username: validators.exists()("Este campo es requerido"),
+            password: validators.exists()("Este campo es requerido"),
         });
     },
 })(LoginForm);

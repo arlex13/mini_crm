@@ -82,23 +82,34 @@ class PrivateRouteBase extends Component {
                         <div>
                             <main className="main-content p-0 ">
                                 <div className="main-navbar bg-white p-2">
-                                    <div className="d-flex justify-content-end">
-                                        <Link
-                                            tabIndex="0"
-                                            to="/login"
-                                            className="btn-secundario2 mr-2"
-                                        >
-                                            <i className="material-icons"></i>
-                                            Entrar
-                                        </Link>
-                                        <Link
-                                            tabIndex="0"
-                                            to="/registro"
-                                            className="btn-secundario2"
-                                        >
-                                            <i className="material-icons"></i>
-                                            Registrarse
-                                        </Link>
+                                    <div className="d-flex justify-content-between">
+                                        <img
+                                            src="https://images-eu.ssl-images-amazon.com/images/G/31/Press_Releases/amazonIN_logo_thumb._CB485921301_.jpg"
+                                            alt="Logo"
+                                            style={{ height: 50 }}
+                                        />
+                                        <div>
+                                            <Link
+                                                tabIndex="0"
+                                                to="/login"
+                                                className="btn-secundario1 "
+                                            >
+                                                <i className="material-icons">
+                                                    
+                                                </i>
+                                                Entrar
+                                            </Link>
+                                            <Link
+                                                tabIndex="0"
+                                                to="/registro"
+                                                className="btn-secundario1"
+                                            >
+                                                <i className="material-icons">
+                                                    
+                                                </i>
+                                                Registrarse
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="main-content-container px-4 container-fluid">

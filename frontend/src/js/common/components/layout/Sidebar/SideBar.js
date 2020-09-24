@@ -21,7 +21,7 @@ class SideBar extends Component {
                                 <img
                                     id="main-logo"
                                     className="d-inline-block align-top mr-1"
-                                    src={require("assets/img/logo.png")}
+                                    src="https://images-eu.ssl-images-amazon.com/images/G/31/Press_Releases/amazonIN_logo_thumb._CB485921301_.jpg"
                                     alt="Logo"
                                 />
                             </div>

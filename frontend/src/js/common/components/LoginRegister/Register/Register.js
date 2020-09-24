@@ -22,14 +22,17 @@ class Registro extends Component {
             <div className="blue-gradient-bg">
                 <br />
                 <div className="d-flex flex-column align-items-center pt-3 bienvenida">
-                    <h1 className="text-center txt-35-n color-4AC">
-                        Bienvenido a Maywi
-                    </h1>
+                    <img
+                        src="https://images-eu.ssl-images-amazon.com/images/G/31/Press_Releases/amazonIN_logo_thumb._CB485921301_.jpg"
+                        alt="Logo"
+                    />
                 </div>
                 <br />
                 <div className="login-wrapper">
                     <div className="card card-login col-lg-3 col-md-4 col-11">
-                        <h5 className="text-center pv">REGISTRO</h5>
+                        <h5 className="text-center pv txt-35-n color-4AC">
+                            REGISTRO
+                        </h5>
                         <LoadMask loading={loader} light>
                             <RegisterForm onSubmit={onSubmit} />
                             <span>
