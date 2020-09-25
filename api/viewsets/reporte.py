@@ -50,7 +50,7 @@ class ReporteProductoViewSet(GenericViewSet):
     def total(self, request, *args, **kwargs):
         try:
             queryset = Productos.objects.filter(vendedor=request.user)
-
+            print("inicio")
             TotalVentaMoneda = queryset.aggregate(
                 a=Sum('producto__total'))
 
@@ -59,6 +59,19 @@ class ReporteProductoViewSet(GenericViewSet):
 
             PromedioPrecio = queryset.aggregate(
                 a=Avg('precio'))
+            print('no tiene nada', PromedioPrecio["a"])
+
+            if (not PromedioPrecio["a"] ):          
+                PromedioPrecio["a"]=0    
+            
+            if (not TotalVentaMoneda["a"] ):    
+                TotalVentaMoneda["a"]=0
+            
+            if (not TotalVentaCantidad["a"] ):
+                TotalVentaCantidad["a"]=0
+
+    
+
 
             return Response({"PromedioPrecio": round(PromedioPrecio["a"], 2), "TotalVentaMoneda": round(TotalVentaMoneda["a"], 2), "TotalVentaCantidad": TotalVentaCantidad["a"]})
 
