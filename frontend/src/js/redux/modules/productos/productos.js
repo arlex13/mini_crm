@@ -16,7 +16,6 @@ const baseReducer = createReducer(
 );
 
 const crearProducto = (data = {}, attachments = []) => (dispatch) => {
-    console.log("este es attachments", attachments);
     api.postAttachments("producto", data, attachments)
         .then((response) => {
             NotificationManager.success(
@@ -36,7 +35,6 @@ const crearProducto = (data = {}, attachments = []) => (dispatch) => {
         .finally(() => {});
 };
 const editarProducto = (id, data = {}, attachments = []) => (dispatch) => {
-    console.log(id);
     api.putAttachments(`producto/${id}/`, data, attachments)
         .then((response) => {
             NotificationManager.success(

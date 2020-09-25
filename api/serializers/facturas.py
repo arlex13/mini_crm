@@ -8,4 +8,3 @@ class FacturaSerializer(serializers.ModelSerializer):
         model = Facturas
         fields = "__all__"
         extra_kwargs = {'total': {'required': False}}
-

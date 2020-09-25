@@ -3,7 +3,6 @@ import "./cards.css";
 import moment from "moment";
 
 const Cards = ({ producto, desactivar, mayorCero, btnComprar }) => {
-    // console.log("card:", datos);
     return (
         <React.Fragment>
             {/* <div className="d-flex flex-row"> */}

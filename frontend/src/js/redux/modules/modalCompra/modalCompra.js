@@ -20,15 +20,12 @@ const btnComprar = (comprar, producto) => (dispatch) => {
         producto = {};
     }
     dispatch(setProductos(producto));
-    console.log("el productooooo", producto);
 };
 
 const comprarProducto = (data) => (dispatch, getStore) => {
-    console.log("este son los datos", data);
     const producto = getStore().modal.producto;
-    console.log("este es el producto", producto);
     data.producto = producto.id;
-    console.log("este son los datos", data);
+
     api.post("factura", data)
         .then(() => {
             NotificationManager.success("Compra Exitosa", "Éxito", 3000);

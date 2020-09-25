@@ -9,7 +9,6 @@ class Listado extends Component {
     };
 
     render() {
-        console.log("ESTADO: ", this.props);
         const {
             data,
             loader,

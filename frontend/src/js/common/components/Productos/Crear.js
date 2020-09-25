@@ -17,7 +17,6 @@ class Crear extends Component {
 
     actualizarFormulario = (data) => {
         const { editarProducto } = this.props;
-        console.log("esto son los datos actualizarFormulario", data);
         editarProducto(data.id, { ...data, imagen: null }, [
             { file: this.state.imagen, name: "imagen" },
         ]);
@@ -28,7 +27,6 @@ class Crear extends Component {
     // };
     crear = (data) => {
         const { crearProducto } = this.props;
-        console.log("esto son los datos", data);
         const imagenx = { file: this.state.imagen, name: "imagen" };
         crearProducto({ ...data, imagen: null }, [imagenx]);
     };

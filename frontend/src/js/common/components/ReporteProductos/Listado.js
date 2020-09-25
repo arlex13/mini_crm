@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import { TableHeaderColumn } from "react-bootstrap-table";
 import Grid from "../Utils/Grid";
 import { standardActions } from "../Utils/Grid/StandardActions";
+import { api } from "../../../utility/api";
 
 class Listado extends Component {
     componentWillMount = () => {
         this.props.listar();
+        this.props.reporteTotal();
     };
 
     render() {
-        console.log("ESTADO: ", this.props);
         const {
             data,
             loader,
@@ -19,7 +20,16 @@ class Listado extends Component {
             eliminar,
             listar,
             page,
+            item,
         } = this.props;
+        let reporte = {
+            TotalVentaMoneda: "0",
+            TotalVentaCantidad: "1",
+            PromedioPrecio: "45",
+        };
+        if (!(Object.keys(item).length === 0)) {
+            reporte = item;
+        }
 
         return (
             <div className="d-flex flex-column w-100">
@@ -52,6 +62,23 @@ class Listado extends Component {
                         </div>
                     </div>
                 </div>
+                <div>
+                    <p className="txt-25-n color-BE1 mb-2">Reporte Global</p>
+                    <p className="mb-1 txt-16-n">
+                        Total producto Vendidos: {reporte.TotalVentaCantidad}
+                    </p>
+                    <p className="mb-1 txt-16-n">
+                        Total producto vendido en Moneda: Q
+                        {reporte.TotalVentaMoneda}
+                    </p>
+                    <p className="mb-1 txt-16-n">
+                        Precio promedio del producto: Q{reporte.PromedioPrecio}
+                    </p>
+                    <p className="txt-25-n color-BE1 my-2">
+                        Reporte por producto
+                    </p>
+                </div>
+
                 <Grid
                     data={data}
                     loading={loader}
@@ -62,7 +89,13 @@ class Listado extends Component {
                     <TableHeaderColumn isKey dataField="nombre" dataSort>
                         Nombre
                     </TableHeaderColumn>
-                    <TableHeaderColumn dataField="precio" dataSort>
+                    <TableHeaderColumn
+                        dataField="precio"
+                        dataSort
+                        dataFormat={(cell) => {
+                            return `Q${cell}`;
+                        }}
+                    >
                         Precio
                     </TableHeaderColumn>
                     <TableHeaderColumn dataField="totalVendido" dataSort>
