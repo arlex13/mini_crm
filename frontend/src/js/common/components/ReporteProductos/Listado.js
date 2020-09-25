@@ -24,8 +24,8 @@ class Listado extends Component {
         } = this.props;
         let reporte = {
             TotalVentaMoneda: "0",
-            TotalVentaCantidad: "1",
-            PromedioPrecio: "45",
+            TotalVentaCantidad: "0",
+            PromedioPrecio: "0",
         };
         if (!(Object.keys(item).length === 0)) {
             reporte = item;

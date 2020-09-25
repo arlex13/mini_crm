@@ -48,14 +48,20 @@ class ReporteProductoViewSet(GenericViewSet):
 
     @action(detail=False, methods=['get'])
     def total(self, request, *args, **kwargs):
-        # queryset = Productos.objects.all()
+        try:
+            queryset = Productos.objects.filter(vendedor=request.user)
 
-        # queryset = self.filter_queryset(queryset)
-        # page = self.paginate_queryset(queryset)
-        # if page is not None:
-        #     serializer = ProductoLeerSerializer(page, many=True)
-        #     return self.get_paginated_response(serializer.data)
+            TotalVentaMoneda = queryset.aggregate(
+                a=Sum('producto__total'))
 
-        # serializer = ProductoLeerSerializer(queryset, many=True)
+            TotalVentaCantidad = queryset.aggregate(
+                a=Sum('producto__cantidad'))
 
-        return Response({"TotalVentaMoneda": "55", "TotalVentaCantidad": "10", "PromedioPrecio": "5"})
+            PromedioPrecio = queryset.aggregate(
+                a=Avg('precio'))
+
+            return Response({"PromedioPrecio": round(PromedioPrecio["a"], 2), "TotalVentaMoneda": round(TotalVentaMoneda["a"], 2), "TotalVentaCantidad": TotalVentaCantidad["a"]})
+
+        except Exception as e:
+            return Response({'error': str(e)},
+                            status=status.HTTP_404_NOT_FOUND)
