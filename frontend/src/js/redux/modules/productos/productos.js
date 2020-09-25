@@ -15,7 +15,7 @@ const baseReducer = createReducer(
     "/productos" //url del componente en el frontend.
 );
 
-const crear2 = (data = {}, attachments = []) => (dispatch) => {
+const crearProducto = (data = {}, attachments = []) => (dispatch) => {
     console.log("este es attachments", attachments);
     api.postAttachments("producto", data, attachments)
         .then((response) => {
@@ -35,7 +35,7 @@ const crear2 = (data = {}, attachments = []) => (dispatch) => {
         })
         .finally(() => {});
 };
-const editar2 = (id, data = {}, attachments = []) => (dispatch) => {
+const editarProducto = (id, data = {}, attachments = []) => (dispatch) => {
     console.log(id);
     api.putAttachments(`producto/${id}/`, data, attachments)
         .then((response) => {
@@ -54,8 +54,8 @@ const editar2 = (id, data = {}, attachments = []) => (dispatch) => {
 
 export const actions = {
     ...baseReducer.actions,
-    crear2,
-    editar2,
+    crearProducto,
+    editarProducto,
 };
 
 export default handleActions(baseReducer.reducers, baseReducer.initialState);

@@ -16,9 +16,9 @@ class Crear extends Component {
     };
 
     actualizarFormulario = (data) => {
-        const { editar2 } = this.props;
+        const { editarProducto } = this.props;
         console.log("esto son los datos actualizarFormulario", data);
-        editar2(data.id, { ...data, imagen: null }, [
+        editarProducto(data.id, { ...data, imagen: null }, [
             { file: this.state.imagen, name: "imagen" },
         ]);
     };
@@ -27,10 +27,10 @@ class Crear extends Component {
     //     editar(data.id, data);
     // };
     crear = (data) => {
-        const { crear2 } = this.props;
+        const { crearProducto } = this.props;
         console.log("esto son los datos", data);
         const imagenx = { file: this.state.imagen, name: "imagen" };
-        crear2({ ...data, imagen: null }, [imagenx]);
+        crearProducto({ ...data, imagen: null }, [imagenx]);
     };
 
     setImagen = (imagen) => {

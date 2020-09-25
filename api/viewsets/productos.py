@@ -19,7 +19,7 @@ class ProductoViewSet(viewsets.ModelViewSet):
     filter_backends = (DjangoFilterBackend,
                        filters.SearchFilter, filters.OrderingFilter)
     filter_fields = ("nombre",)
-    search_fields = ("nombre",)
+    search_fields = ("nombre", "descripcion")
     ordering_fields = ("nombre", "precio", "cantidad",)
     queryset = Productos.objects.all()
     serializer_class = ProductoSerializer

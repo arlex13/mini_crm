@@ -24,7 +24,9 @@ class Listado extends Component {
         return (
             <div className="d-flex flex-column w-100">
                 <div className="d-flex flex-wrap mb-2  mt-5">
-                    <h3 className="txt-35-n color-003 w-50">Productos</h3>
+                    <h3 className="txt-35-n color-003 w-50">
+                        Reportes de Productos
+                    </h3>
 
                     <div className="d-flex flex-row justify-content-between align-items-center flex-fill ">
                         <div className="flex-fill d-flex align-items-center ml-3">
