@@ -8,7 +8,7 @@ import { handleActions } from "redux-actions";
 // Constants
 // ------------------------------------
 const storeId = "ventas"; //identificador dentro del store.
-const endpoint = "productoventa"; //endpoint donde realizará las peticiones.
+const endpoint = "producto/producto_venta"; //endpoint donde realizará las peticiones.
 const formName = undefined; //Nombre del formulario.
 const resourceList = undefined; //url del componente en el frontend.
 

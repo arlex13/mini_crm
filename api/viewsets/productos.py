@@ -1,4 +1,6 @@
 from django.core.files import File
+from django.db.models import Sum, Avg
+
 
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -7,11 +9,10 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework import status, filters, viewsets
 from rest_framework.response import Response
 
-from api.serializers.productos import ProductoSerializer
+from api.serializers.productos import ProductoSerializer,  ProductoLeerSerializer
 from api.models.productos import Productos
 
 import json
-
 
 
 class ProductoViewSet(viewsets.ModelViewSet):
@@ -24,14 +25,12 @@ class ProductoViewSet(viewsets.ModelViewSet):
     serializer_class = ProductoSerializer
 
     def get_queryset(self):
-        queryset = Productos.objects.filter(vendedor= self.request.user.id)        
+        queryset = Productos.objects.filter(vendedor=self.request.user)
         return queryset
-
 
     def create(self, request, *args, **kwargs):
         data = json.loads(request.data['data'])
         data["vendedor"] = request.user.id
-        # print("1 datossss request.data", data)
         imagen = request.data.get('imagen')
         if imagen is not None:
             data['imagen'] = File(imagen)
@@ -63,24 +62,25 @@ class ProductoViewSet(viewsets.ModelViewSet):
             # If 'prefetch_related' has been applied to a queryset, we need to
             # forcibly invalidate the prefetch cache on the instance.
             instance._prefetched_objects_cache = {}
-        return Response(serializer.data)  
+        return Response(serializer.data)
 
+    def get_permissions(self):
+        permissions = []
+        if self.action == "producto_venta":
+            permissions.append(AllowAny)
+        else:
+            permissions.append(IsAuthenticated)
+        return [p() for p in permissions]
 
-    # def get_permissions(self):
-    #     permissions = []
-    #     if self.action == "todos":
-    #         permissions.append(AllowAny)
-    #     else:
-    #         permissions.append(IsAuthenticated)
-    #     return [p() for p in permissions]
+    @action(detail=False, methods=['get'])
+    def producto_venta(self, request, *args, **kwargs):
+        queryset = Productos.objects.all()
 
-    # @action(detail=False, methods=['get'])
-    # def todos(self, request, *args, **kwargs):
-    #     queryset = Productos.objects.all()
-    #     page = self.paginate_queryset(queryset)
-    #     if page is not None:
-    #         serializer =  self.get_serializer(page, many=True)
-    #         return self.get_paginated_response(serializer.data)
+        queryset = self.filter_queryset(queryset)
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = ProductoLeerSerializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
 
-    #     serializer = self.get_serializer(queryset, many=True)
-    #     return Response(serializer.data)
+        serializer = ProductoLeerSerializer(queryset, many=True)
+        return Response(serializer.data)

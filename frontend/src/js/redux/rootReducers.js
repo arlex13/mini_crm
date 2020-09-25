@@ -10,6 +10,7 @@ import notificaciones from "./modules/notificaciones/notificaciones";
 import productos from "./modules/productos/productos";
 import ventas from "./modules/ventas/ventas";
 import modal from "./modules/modalCompra/modalCompra";
+import reporteProducto from "./modules/reporteProductos/reporteProductos";
 
 export default combineReducers({
     form: formReducer,
@@ -22,4 +23,5 @@ export default combineReducers({
     productos,
     ventas,
     modal,
+    reporteProducto,
 });

@@ -22,6 +22,7 @@ require("../style/index.css");
 import CrearProducto from "./common/components/Productos/CrearContainer";
 import Producto from "./common/components/Productos/ListadoContainer";
 import Venta from "./common/components/Ventas/ListadoContainer";
+import ReporteProducto from "./common/components/ReporteProductos/ListadoContainer";
 
 module.exports = (
     <div>
@@ -43,6 +44,11 @@ module.exports = (
                     component={Notificaciones}
                 />
                 <ProtectedRoute exact path="/tabs" component={ExampleTabs} />
+                <ProtectedRoute
+                    exact
+                    path="/productos-reporte"
+                    component={ReporteProducto}
+                />
 
                 {/* Productos */}
                 <ProtectedRoute exact path="/productos" component={Producto} />
